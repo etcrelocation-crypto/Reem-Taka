@@ -25,7 +25,10 @@ app.get("/api/content", async (req, res) => {
 
 app.post("/api/admin/login", async (req, res) => {
   const { code } = req.body;
-  if (code === process.env.ADMIN_ACCESS_CODE) {
+  const adminCode = (process.env.ADMIN_ACCESS_CODE || "ETC2026").trim();
+  const inputCode = (code || "").trim();
+  
+  if (inputCode === adminCode) {
     res.json({ success: true });
   } else {
     res.status(401).json({ error: "Unauthorized" });

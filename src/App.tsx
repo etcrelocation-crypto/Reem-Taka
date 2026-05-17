@@ -165,10 +165,11 @@ function AdminLoginModal({ isOpen, onClose, onSuccess }: any) {
         setCode("");
         setError("");
       } else {
-        setError("Invalid access code");
+        const data = await res.json().catch(() => ({}));
+        setError(data.error || "Invalid access code");
       }
     } catch (err) {
-      setError("System error");
+      setError("System error: Backend unreachable (Are you on the live development URL?)");
     }
   };
 
@@ -450,7 +451,7 @@ function Hero({ content, isAdmin, onUpdate, theme }: any) {
           className="relative aspect-square lg:aspect-auto h-[600px] rounded-3xl overflow-hidden shadow-2xl"
         >
           <EditableImage 
-            src={content.hero.image || "https://images.unsplash.com/photo-1540910419892-f0c962a5836d?auto=format&fit=crop&q=80&w=1200"} 
+            src={content.hero.image || "https://images.unsplash.com/photo-1549443585-6184852c00cc?auto=format&fit=crop&q=80&w=1200"} 
             alt="Kuwait Skyline"
             isAdmin={isAdmin}
             onChange={updateImage}
