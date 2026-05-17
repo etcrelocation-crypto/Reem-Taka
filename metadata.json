@@ -1,0 +1,6 @@
+{
+  "name": "ETC Relocation Kuwait",
+  "description": "Premium relocation services in Kuwait, elevated by AI and personalized consultancy.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

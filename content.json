@@ -1,0 +1,71 @@
+{
+  "hero": {
+    "title": "Seamless Relocation, Elevated by AI.",
+    "subtitle": "Based in Kuwait, we are an independently owned & operated Destination Services Provider providing comprehensive, cost effective and user-centered relocation experiences.",
+    "image": "https://images.unsplash.com/photo-1578330132822-019620c4fb78?auto=format&fit=crop&q=80&w=1200"
+  },
+  "services": [
+    {
+      "id": "home-placement",
+      "title": "Home Placement",
+      "description": "Finding the right home is the most important part of the relocation process. Placing the Assignee and their family in the right property is critical to a successful move.",
+      "icon": "Home"
+    },
+    {
+      "id": "corporate-housing",
+      "title": "Corporate Housing",
+      "description": "We provide a wide range of housing solutions for every occasion. We work closely with you to understand your requirements.",
+      "icon": "Building"
+    },
+    {
+      "id": "school-support",
+      "title": "School Admission Support",
+      "description": "Finding suitable schooling for children is a primary concern. Our team works with Assignees to inform them about different school structures and curricula.",
+      "icon": "GraduationCap"
+    },
+    {
+      "id": "immigration",
+      "title": "Immigration Support",
+      "description": "Immigration regulations are challenging. Through our knowledge of local laws, we simplify the process for your employees.",
+      "icon": "Globe"
+    },
+    {
+      "id": "settling-in",
+      "title": "Settling In",
+      "description": "Moving is only the beginning. We work with Assignees to get all essentials taken care of, so they can fully start their new lives.",
+      "icon": "CheckCircle"
+    }
+  ],
+  "team": [
+    {
+      "name": "Reem Taka",
+      "role": "Owner & General Manager",
+      "bio": "Born into a diverse family, with an Iraqi father and German mother, I have always been a global citizen. I moved to Kuwait in 2007. Having worked in logistics prior to my move, I wanted to leverage my skills to help families relocate and start new lives.",
+      "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400"
+    },
+    {
+      "name": "Joy Hogg",
+      "role": "Relocation Consultant",
+      "bio": "Having moved to Kuwait in the early Eighties, I have seen countless families make Kuwait their new home. I joined ETC Relocation Services in 2016, bringing more than twenty years of industry experience.",
+      "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=400"
+    },
+    {
+      "name": "Bothaina Helmy",
+      "role": "Relocation Consultant",
+      "bio": "Ever since leaving Egypt in 2013, I’ve been lucky to live in different and diverse countries. I’ve been in Kuwait for the last ten years and love helping newcomers make this amazing country their new home.",
+      "image": "https://images.unsplash.com/photo-1598550874175-4d0fe427c731?auto=format&fit=crop&q=80&w=400"
+    }
+  ],
+  "contact": {
+    "address": "Tunis Street, Building 15, Office 9, Hawally, Kuwait",
+    "phone": "+965 9774 1004",
+    "email": "admin@etcrelocation.com"
+  },
+  "testimonials": [
+    {
+      "text": "Reem and her team at ETC Relocation Services are a force of nature. Their attention to detail surpasses anyone I’ve met in this field. Having the ETC team on our side was an absolute must.",
+      "author": "Avnish Kana",
+      "title": "IT Manager at Angola LNG Marketing Ltd."
+    }
+  ]
+}

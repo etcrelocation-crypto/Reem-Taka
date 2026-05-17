@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Luxury Palette */
+  --color-luxury-bg: #020617;
+  --color-luxury-accent: #c5a059;
+  --color-luxury-ink: #f8fafc;
+  
+  /* Modern Palette */
+  --color-modern-bg: #ffffff;
+  --color-modern-accent: #0f172a;
+  --color-modern-ink: #334155;
+}
+
+@layer base {
+  body {
+    @apply transition-colors duration-500 font-sans;
+  }
+
+  .theme-luxury {
+    background-color: var(--color-luxury-bg);
+    color: var(--color-luxury-ink);
+  }
+
+  .theme-luxury h1, .theme-luxury h2, .theme-luxury h3 {
+    @apply font-serif;
+  }
+
+  .theme-modern {
+    background-color: var(--color-modern-bg);
+    color: var(--color-modern-ink);
+  }
+
+  .theme-modern h1, .theme-modern h2, .theme-modern h3 {
+    @apply font-sans font-semibold;
+  }
+}
