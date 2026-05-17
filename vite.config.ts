@@ -8,7 +8,7 @@ export default defineConfig(({mode}) => {
   const isProd = mode === 'production';
   
   return {
-    base: './',
+    base: '/Reem-Taka/',
     plugins: [react(), tailwindcss()],
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
