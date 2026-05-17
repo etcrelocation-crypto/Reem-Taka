@@ -61,14 +61,18 @@ export default function App() {
 
   const handleUpdateContent = async (newContent: Content) => {
     try {
-      await fetch("/api/content", {
+      const res = await fetch("/api/content", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newContent),
       });
+      if (!res.ok) throw new Error("API save failed");
       setContent(newContent);
     } catch (error) {
       console.error("Failed to update content:", error);
+      // In static deployment, we can't save back to the file system
+      alert("Note: Dynamic saving is unavailable on static hosting (GitHub Pages). Changes will persist for this session only. To save permanently, please use the AI Studio editor or update content.json in your repository.");
+      setContent(newContent);
     }
   };
 
@@ -153,23 +157,35 @@ function AdminLoginModal({ isOpen, onClose, onSuccess }: any) {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    const adminCode = (code || "").trim();
+    
     try {
       const res = await fetch("/api/admin/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code }),
+        body: JSON.stringify({ code: adminCode }),
       });
       if (res.ok) {
         onSuccess();
         onClose();
         setCode("");
         setError("");
+        return;
       } else {
         const data = await res.json().catch(() => ({}));
         setError(data.error || "Invalid access code");
       }
     } catch (err) {
-      setError("System error: Backend unreachable (Are you on the live development URL?)");
+      // Fallback for static sites (like GitHub Pages) where the API doesn't exist
+      console.log("Backend check failed, trying local fallback...");
+      if (adminCode === "ETC2026" || adminCode === "REEM2026") {
+        onSuccess();
+        onClose();
+        setCode("");
+        setError("");
+        return;
+      }
+      setError("Invalid access code (Static Mode)");
     }
   };
 
@@ -451,7 +467,7 @@ function Hero({ content, isAdmin, onUpdate, theme }: any) {
           className="relative aspect-square lg:aspect-auto h-[600px] rounded-3xl overflow-hidden shadow-2xl"
         >
           <EditableImage 
-            src={content.hero.image || "https://images.unsplash.com/photo-1549443585-6184852c00cc?auto=format&fit=crop&q=80&w=1200"} 
+            src={content.hero.image || "https://images.unsplash.com/photo-1540910419892-f0c962a5836d?auto=format&fit=crop&q=80&w=1200"} 
             alt="Kuwait Skyline"
             isAdmin={isAdmin}
             onChange={updateImage}
