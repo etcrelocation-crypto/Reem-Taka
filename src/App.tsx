@@ -6,6 +6,7 @@ import {
   Settings, Save, Eye, Send, MessageSquare, ChevronRight
 } from "lucide-react";
 import Logo from "./components/Logo";
+import staticContent from "../content.json";
 
 // Types
 interface TeamMember {
@@ -44,11 +45,15 @@ export default function App() {
 
   const fetchContent = async () => {
     try {
+      // Try to load from server API first (AI Studio environment)
       const res = await fetch("/api/content");
+      if (!res.ok) throw new Error("API not available");
       const data = await res.json();
       setContent(data);
     } catch (error) {
-      console.error("Failed to load content:", error);
+      // Fallback to static bundled content (GitHub Pages environment)
+      console.log("Using static content fallback");
+      setContent(staticContent as any);
     } finally {
       setIsLoading(false);
     }
@@ -664,10 +669,14 @@ function AIConcierge({ theme }: { theme: "luxury" | "modern" }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text }),
       });
+      if (!res.ok) {
+        if (res.status === 404) throw new Error("Backend API not found. AI features require a server (Static hosting detected).");
+        throw new Error("Chat service unavailable.");
+      }
       const data = await res.json();
       setMessages(prev => [...prev, { role: "ai", text: data.text || "I'm sorry, I couldn't process that." }]);
-    } catch (error) {
-      setMessages(prev => [...prev, { role: "ai", text: "Connection error. Please try again." }]);
+    } catch (error: any) {
+      setMessages(prev => [...prev, { role: "ai", text: error.message || "Connection error. Please try again." }]);
     } finally {
       setIsTyping(false);
     }
